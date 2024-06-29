@@ -1,0 +1,25 @@
+{
+  "name": "pwd",
+  "version": "0.0.1",
+  "description": "Playwright reporter that uploads test data to the dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "playwright",
+    "reporter",
+    "tests"
+  ],
+  "author": "André Roggeri Campos",
+  "license": "ISC",
+  "dependencies": {
+    "@playwright/test": "^1.44.1",
+    "json-stringify-safe": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/json-stringify-safe": "^5.0.3",
+    "@types/node": "^20.14.7",
+    "typescript": "^5.5.2"
+  }
+}
