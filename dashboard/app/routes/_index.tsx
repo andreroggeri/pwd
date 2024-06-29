@@ -1,9 +1,11 @@
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData, useNavigate } from "@remix-run/react";
 import { JwtPayload } from "jsonwebtoken";
+import { MainNav } from "~/components/main-nav";
 import { SessionAuthForRemix } from "../components/sessionAuthForRemix";
 import { TryRefreshComponent } from "../components/tryRefreshClientComponent";
 import { getSessionForSSR } from "../superTokensHelpers";
+import { UserNav } from '~/components/user-nav';
 
 export async function loader({ request }: LoaderFunctionArgs): Promise<{
   accessTokenPayload: JwtPayload | undefined;
@@ -66,6 +68,15 @@ export default function Home() {
    */
   return (
     <SessionAuthForRemix>
+      <div className="border-b">
+        <div className="flex h-16 items-center px-4">
+          {/* <TeamSwitcher /> */}
+          <MainNav className="mx-6" />
+          <div className="ml-auto flex items-center space-x-4">
+            <UserNav />
+          </div>
+        </div>
+      </div>
       <div>
         <div>
           <div>Login successful</div>

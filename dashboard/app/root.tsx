@@ -8,8 +8,8 @@ import {
 } from "@remix-run/react";
 import SuperTokens, { SuperTokensWrapper } from "supertokens-auth-react";
 import { SessionAuth } from "supertokens-auth-react/recipe/session/index.js";
-import "./globals.css";
 import { frontendConfig } from "./config/frontend";
+import "./globals.css";
 
 if (typeof window !== "undefined") {
   SuperTokens.init(frontendConfig());
@@ -25,7 +25,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="app-wrapper">
+      <body>
         <SuperTokensWrapper>
           {isUnprotectedRoute ? (
             <Outlet />
