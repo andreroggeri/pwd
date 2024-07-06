@@ -1,5 +1,4 @@
 // This file is responsible for bootstrapping your Remix application on the server-side. It sets up the server environment, handles incoming requests, and renders the initial HTML markup to send back to the client. It typically imports the necessary server-side dependencies and sets up routing and middleware. This file is executed on the server when handling requests.
-
 import type { EntryContext } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import { renderToString } from "react-dom/server";

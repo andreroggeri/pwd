@@ -141,7 +141,7 @@ async function getSessionDetails(
 }> {
   const baseResponse = new CollectingResponse();
   // @ts-expect-error instance is private but for some rease it is being accessed here
-  const recipe = SessionRecipe.instance;
+  const recipe = SessionRecipe.default.instance;
   const tokenTransferMethod = recipe.config.getTokenTransferMethod({
     req: preParsedRequest,
     forCreateNewSession: false,

@@ -14,7 +14,8 @@ export const frontendConfig = (): SuperTokensConfig => {
       ThirdPartyReact.init({
         signInAndUpFeature: {
           providers: [
-            ThirdPartyReact.Google.init(),
+            // TODO: Enable later
+            // ThirdPartyReact.Google.init(),
             ThirdPartyReact.Github.init(),
           ],
         },

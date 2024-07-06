@@ -3,6 +3,7 @@ import EmailPasswordNode from "supertokens-node/recipe/emailpassword/index.js";
 import SessionNode from "supertokens-node/recipe/session/index.js";
 import Dashboard from "supertokens-node/recipe/dashboard/index.js";
 import UserRoles from "supertokens-node/recipe/userroles/index.js";
+import UserMetadata from "supertokens-node/recipe/usermetadata";
 import { appInfo } from "./appInfo";
 import { TypeInput } from "supertokens-node/types";
 import SuperTokens from "supertokens-node";
@@ -11,7 +12,8 @@ export const backendConfig = (): TypeInput => {
   return {
     supertokens: {
       // this is the location of the SuperTokens core.
-      connectionURI: "https://try.supertokens.com",
+      apiKey: process.env.SUPERTOKENS_API_KEY!,
+      connectionURI: process.env.SUPERTOKENS_CONNECTION_URI!,
     },
     appInfo,
     recipeList: [
@@ -21,25 +23,26 @@ export const backendConfig = (): TypeInput => {
           providers: [
             // We have provided you with development keys which you can use for testing.
             // IMPORTANT: Please replace them with your own OAuth keys for production use.
-            {
-              config: {
-                thirdPartyId: "google",
-                clients: [
-                  {
-                    clientId:
-                      "1060725074195-kmeum4crr01uirfl2op9kd5acmi9jutn.apps.googleusercontent.com",
-                    clientSecret: "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",
-                  },
-                ],
-              },
-            },
+            // TODO: Enable later
+            // {
+            //   config: {
+            //     thirdPartyId: "google",
+            //     clients: [
+            //       {
+            //         clientId:
+            //           "1060725074195-kmeum4crr01uirfl2op9kd5acmi9jutn.apps.googleusercontent.com",
+            //         clientSecret: "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",
+            //       },
+            //     ],
+            //   },
+            // },
             {
               config: {
                 thirdPartyId: "github",
                 clients: [
                   {
-                    clientId: "467101b197249757c71f",
-                    clientSecret: "e97051221f4b6426e8fe8d51486396703012f5bd",
+                    clientId: process.env.SUPERTOKENS_GITHUB_CLIENT_ID!,
+                    clientSecret: process.env.SUPERTOKENS_GITHUB_CLIENT_SECRET!,
                   },
                 ],
               },
@@ -50,6 +53,7 @@ export const backendConfig = (): TypeInput => {
       SessionNode.init(),
       Dashboard.init(),
       UserRoles.init(),
+      UserMetadata.init(),
     ],
     isInServerlessEnv: true,
     framework: "custom",
