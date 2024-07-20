@@ -53,7 +53,7 @@ export default function Home() {
      */
     if (!hasToken) {
       console.log("No session found. Redirecting to /auth");
-      return navigate("/auth");
+      return navigate("https://globo.com");
     }
     /**
      * This means that the session does not exist but we have session tokens for the user. In this case
