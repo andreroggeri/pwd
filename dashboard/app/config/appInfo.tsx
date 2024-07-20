@@ -4,6 +4,11 @@ if (typeof window === "undefined") {
 } else {
   url = window.location.origin;
 }
+
+if (!url.includes("http")) {
+  url = "https://" + url;
+}
+
 export const appInfo = {
   // learn more about this on https://supertokens.com/docs/thirdpartyemailpassword/appinfo
   appName: "Playwright Dashboard",
