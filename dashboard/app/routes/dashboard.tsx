@@ -1,14 +1,7 @@
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData, useNavigate } from "@remix-run/react";
 import { JwtPayload } from "jsonwebtoken";
-import { FaBug, FaCheck, FaHourglass, FaRotate } from "react-icons/fa6";
 import { getUser } from "supertokens-node";
-import { MainNav } from "~/components/main-nav";
-import { Overview } from "~/components/overview";
-import ProjectSwitcher from "~/components/project-selector";
-import { RecentExecutions } from "~/components/recent-executions";
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
-import { UserNav } from "~/components/user-nav";
 import { TryRefreshComponent } from "../components/tryRefreshClientComponent";
 import { getSessionForSSR } from "../superTokensHelpers";
 
@@ -87,92 +80,7 @@ export default function Home() {
    */
   return (
     <>
-      <div className="border-b">
-        <div className="flex h-16 items-center px-4">
-          <ProjectSwitcher projects={projects} />
-          <MainNav className="mx-6" />
-          <div className="ml-auto flex items-center space-x-4">
-            <UserNav email={email} />
-          </div>
-        </div>
-      </div>
-
-      <div className="flex-1 space-y-4 p-8 pt-6">
-        <div className="flex items-center justify-between space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-          <div className="flex items-center space-x-2">
-            {/* <CalendarDateRangePicker /> */}
-            {/* <Button>Download</Button> */}
-          </div>
-        </div>
-        <div className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Pass rate</CardTitle>
-                <FaCheck className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">72.47%</div>
-                <p className="text-xs font-bold text-green-500">
-                  +4.1% from last month
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Test count
-                </CardTitle>
-                <FaBug className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">12</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Execution count
-                </CardTitle>
-                <FaRotate className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">27</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Average execution time
-                </CardTitle>
-                <FaHourglass className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">32 minutes</div>
-              </CardContent>
-            </Card>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-            <Card className="col-span-4">
-              <CardHeader>
-                <CardTitle>Overview</CardTitle>
-              </CardHeader>
-              <CardContent className="pl-2">
-                <Overview />
-              </CardContent>
-            </Card>
-            <Card className="col-span-3">
-              <CardHeader>
-                <CardTitle>Recent executions</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <RecentExecutions />
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
+      <h1> IT WORKS</h1>
     </>
   );
 }
