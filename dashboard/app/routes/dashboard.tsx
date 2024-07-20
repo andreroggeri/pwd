@@ -1,7 +1,8 @@
 import { LoaderFunctionArgs } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, useNavigate } from "@remix-run/react";
 import { JwtPayload } from "jsonwebtoken";
 import { getUser } from "supertokens-node";
+import { TryRefreshComponent } from "../components/tryRefreshClientComponent";
 import { getSessionForSSR } from "../superTokensHelpers";
 
 export async function loader({ request }: LoaderFunctionArgs): Promise<{
@@ -27,13 +28,52 @@ export async function loader({ request }: LoaderFunctionArgs): Promise<{
 }
 
 export default function Home() {
-  const { session, email } = useLoaderData<typeof loader>();
+  const navigate = useNavigate();
 
-  console.log({ session, email });
+  const { session, email } = useLoaderData<typeof loader>();
 
   const { accessTokenPayload, hasToken, error } = session;
 
   console.log({ accessTokenPayload, hasToken, error });
+
+  if (error) {
+    return (
+      <div>
+        Something went wrong while trying to get the session. Error -{" "}
+        {error.message}
+      </div>
+    );
+  }
+
+  // `accessTokenPayload` will be undefined if it the session does not exist or has expired
+  if (!accessTokenPayload || !email) {
+    /**
+     * This means that the user is not logged in. If you want to display some other UI in this
+     * case, you can do so here.
+     */
+    if (!hasToken) {
+      console.log("No session found. Redirecting to /auth");
+      return navigate("/auth");
+    }
+    /**
+     * This means that the session does not exist but we have session tokens for the user. In this case
+     * the `TryRefreshComponent` will try to refresh the session.
+     *
+     * To learn about why the 'key' attribute is required refer to: https://github.com/supertokens/supertokens-node/issues/826#issuecomment-2092144048
+     */
+    return <TryRefreshComponent key={Date.now()} />;
+  }
+
+  const projects = [
+    {
+      label: "Project 1 lalalala",
+      value: "acme-inc",
+    },
+    {
+      label: "Project 2 lalalalalal",
+      value: "monsters",
+    },
+  ];
 
   /**
    * SessionAuthForRemix will handle proper redirection for the user based on the different session states.
