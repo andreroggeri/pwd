@@ -9,7 +9,6 @@ import ProjectSwitcher from "~/components/project-selector";
 import { RecentExecutions } from "~/components/recent-executions";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { UserNav } from "~/components/user-nav";
-import { SessionAuthForRemix } from "../components/sessionAuthForRemix";
 import { TryRefreshComponent } from "../components/tryRefreshClientComponent";
 import { getSessionForSSR } from "../superTokensHelpers";
 
@@ -87,7 +86,7 @@ export default function Home() {
    * It will redirect to the login page if the session does not exist etc.
    */
   return (
-    <SessionAuthForRemix>
+    <>
       <div className="border-b">
         <div className="flex h-16 items-center px-4">
           <ProjectSwitcher projects={projects} />
@@ -174,6 +173,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </SessionAuthForRemix>
+    </>
   );
 }
