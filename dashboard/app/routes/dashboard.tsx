@@ -35,6 +35,8 @@ export default function Home() {
   const { accessTokenPayload, hasToken, error } = session;
 
   console.log({ accessTokenPayload, hasToken, error });
+  // @ts-expect-error - testing if the navigate function is available
+  window.testNavigate = navigate;
 
   if (error) {
     return (
@@ -53,8 +55,6 @@ export default function Home() {
      */
     if (!hasToken) {
       console.log("No session found. Redirecting to /auth");
-      // @ts-expect-error - testing if the navigate function is available
-      window.magic.navigate = navigate;
       return navigate("/auth");
     }
     /**
