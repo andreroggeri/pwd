@@ -53,7 +53,9 @@ export default function Home() {
      */
     if (!hasToken) {
       console.log("No session found. Redirecting to /auth");
-      return navigate("https://globo.com");
+      // @ts-expect-error - testing if the navigate function is available
+      window.magic.navigate = navigate;
+      return navigate("/auth");
     }
     /**
      * This means that the session does not exist but we have session tokens for the user. In this case
